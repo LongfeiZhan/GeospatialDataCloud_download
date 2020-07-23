@@ -18,9 +18,9 @@ driver = webdriver.Chrome(executable_path = r'C:\Program Files (x86)\Google\Chro
 driver.get('https://www.gscloud.cn/accounts/login')
 
 email = driver.find_element_by_xpath('//*[@id="userid"]')
-email.send_keys('1627391527@qq.com')
+email.send_keys('xxxxxxx@qq.com') #account
 password = driver.find_element_by_xpath('//*[@id="password"]')
-password.send_keys('keepmoving')
+password.send_keys('xxxxxxxx') #password
 captcha = driver.find_element_by_xpath('//*[@id="id_captcha_1"]')
 captcha_sj = input('请输入验证码：').strip()
 captcha.send_keys(captcha_sj)
@@ -32,7 +32,7 @@ time.sleep(3)
 GDEMV30 = driver.find_element_by_xpath('//*[@id="dataset-listview"]/div/div/ul/li[3]/div/a[3]').click() #点击MODLT1D地表温度每天产品
 time.sleep(3)
 
-# #一共是2315页
+# 一共是2315页
 page_num = 2315
 page = 1
 
@@ -53,6 +53,6 @@ while page <= page_num:
         WebDriverWait(driver, 20).until(expected_conditions.visibility_of_element_located((By.XPATH, d_everypage)))
         element = driver.find_element_by_xpath(d_everypage)
         webdriver.ActionChains(driver).move_to_element(element).click(element ).perform()
-        # download = driver.find_element_by_xpath(d_everypage).click()
-        time.sleep(5)  #每个下载间隔20s
+        # download = driver.find_element_by_xpath(d_everypage).click()  #跳转到下一页时会报错
+        time.sleep(5)  #每个下载间隔5s
     page += 1
